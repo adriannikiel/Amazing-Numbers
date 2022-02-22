@@ -7,37 +7,65 @@ public class Main {
 //        write your code here
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter a natural number:");
-        int number = scanner.nextInt();
+        System.out.println("Welcome to Amazing Numbers!\n" +
+                "\n" +
+                "Supported requests:\n" +
+                "- enter a natural number to know its properties;\n" +
+                "- enter 0 to exit.");
 
-        boolean isEven = false;
-        boolean isOdd = false;
-        boolean isBuzz = false;
-        boolean isDuck = false;
+        long number;
 
-        if (number >= 1) {
-            if (number % 2 == 0) {
-                isEven = true;
+        do {
+            System.out.println("\nEnter a request: ");
+            number = scanner.nextLong();
+
+            if (number >= 1) {
+
+                boolean isEven = isEvenNumber(number);
+                boolean isOdd = isOddNumber(number);
+                boolean isDuck = isDuckNumber(number);
+                boolean isBuzz = isBuzzNumber(number);
+                boolean isPalindromic = isPalindromicNumber(number);
+
+                System.out.println("Properties of " + number);
+                System.out.println("\teven: " + isEven);
+                System.out.println("\todd: " + isOdd);
+                System.out.println("\tbuzz: " + isBuzz);
+                System.out.println("\tduck: " + isDuck);
+                System.out.println("\tpalindromic: " + isPalindromic);
+
             } else {
-                isOdd = true;
+                System.out.println("The first parameter should be a natural number or zero.");
             }
 
-            if (String.valueOf(number).contains("0")) {
-                isDuck = true;
-            }
+        } while (number != 0);
+    }
 
-            if (number % 7 == 0 || number % 10 == 7) {
-                isBuzz = true;
-            }
+    public static boolean isEvenNumber(long number) {
+        return number % 2 == 0;
+    }
 
-            System.out.println("Properties of " + number);
-            System.out.println("\teven: " + isEven);
-            System.out.println("\todd: " + isOdd);
-            System.out.println("\tbuzz: " + isBuzz);
-            System.out.println("\tduck: " + isDuck);
+    private static boolean isOddNumber(long number) {
+        return !isEvenNumber(number);
+    }
 
-        } else {
-            System.out.println("This number is not natural!");
-        }
+    private static boolean isDuckNumber(long number) {
+        return String.valueOf(number).contains("0");
+    }
+
+    private static boolean isBuzzNumber(long number) {
+        return number % 7 == 0 || number % 10 == 7;
+    }
+
+    private static boolean isPalindromicNumber(long number) {
+
+        String numberAsString = String.valueOf(number);
+        StringBuilder builder = new StringBuilder(numberAsString);
+
+        String reversed = builder.reverse().toString();
+
+        return numberAsString.equals(reversed);
     }
 }
+
+
