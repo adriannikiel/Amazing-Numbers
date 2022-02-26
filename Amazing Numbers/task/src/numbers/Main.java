@@ -245,6 +245,21 @@ public class Main {
         return ((square - Math.floor(square)) == 0);
     }
 
+    private static boolean isJumpingNumber(long number) {
+
+        while (number > 9) {
+            int previous = (int) (number % 10);
+            number /= 10;
+            int current = (int) (number % 10);
+
+            if ( (previous - 1 != current) && (previous + 1 != current)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private static List<NumberProperty> checkNumbers(long number) {
 
         List<NumberProperty> properties = new ArrayList<>();
@@ -258,6 +273,7 @@ public class Main {
         if (isSpyNumber(number)) properties.add(NumberProperty.SPY);
         if (isSunnyNumber(number)) properties.add(NumberProperty.SUNNY);
         if (isSquareNumber(number)) properties.add(NumberProperty.SQUARE);
+        if (isJumpingNumber(number)) properties.add(NumberProperty.JUMPING);
 
         return properties;
     }
@@ -276,6 +292,7 @@ public class Main {
         System.out.println("\tspy: " + properties.contains(NumberProperty.SPY));
         System.out.println("\tsunny: " + properties.contains(NumberProperty.SUNNY));
         System.out.println("\tsquare: " + properties.contains(NumberProperty.SQUARE));
+        System.out.println("\tjumping: " + properties.contains(NumberProperty.JUMPING));
     }
 
     private static void printMultipleNumberProperties(long number, int times) {
@@ -290,9 +307,10 @@ public class Main {
             System.out.print(properties.contains(NumberProperty.BUZZ) ? " buzz," : "");
             System.out.print(properties.contains(NumberProperty.PALINDROMIC) ? " palindromic," : "");
             System.out.print(properties.contains(NumberProperty.GAPFUL) ? " gapful," : "");
-            System.out.print(properties.contains(NumberProperty.SPY)? " spy," : "");
+            System.out.print(properties.contains(NumberProperty.SPY) ? " spy," : "");
             System.out.print(properties.contains(NumberProperty.SUNNY) ? " sunny," : "");
             System.out.print(properties.contains(NumberProperty.SQUARE) ? " square," : "");
+            System.out.print(properties.contains(NumberProperty.JUMPING) ? " jumping," : "");
             System.out.print(properties.contains(NumberProperty.EVEN) ? " even" : "");
             System.out.print(properties.contains(NumberProperty.ODD) ? " odd" : "");
 
@@ -352,7 +370,7 @@ public class Main {
             System.out.println("The properties " + properties + " are wrong.");
         }
 
-        System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY]");
+        System.out.println("Available properties: [EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING]");
     }
 
     private static void printMutuallyExclusivePropertyParameterWarning(String property1, String property2) {

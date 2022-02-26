@@ -927,6 +927,15 @@ files:
         }
     }
   learner_created: false
+- name: src/numbers/NumberProperty.java
+  visible: true
+  text: |
+    package numbers;
+
+    public enum NumberProperty {
+        EVEN, ODD, BUZZ, DUCK, PALINDROMIC, GAPFUL, SPY, SQUARE, SUNNY, JUMPING
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/learn/step/13205#comment
 status: Unchecked
 record: -1
