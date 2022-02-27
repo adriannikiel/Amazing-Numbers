@@ -6,6 +6,8 @@ JetBrainsAcademy project for learning Java programming
 
 https://github.com/adriannikiel/Amazing-Numbers/tree/master/Amazing%20Numbers/task/src
 
+![Capture_MagicNumbers](https://user-images.githubusercontent.com/22996004/155863128-525582ad-787f-402a-8013-8f917faa2cdd.PNG)
+
 
 ## Official description
 
